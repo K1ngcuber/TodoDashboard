@@ -1,13 +1,36 @@
 import React from "react";
 
+type Todo = {
+  todo: string;
+  timestamp: string;
+};
+
 export default function TodoContainer({ todos }) {
   return (
     <div className="todo-container">
-      <div className="col">
-        <h1>Todo List</h1>
-      </div>
-      <div className="col">
-        <h1>Done</h1>
+      <div className="row">
+        <div className="col">
+          <h1>Todo</h1>
+          {todos.map((todo: Todo, index) => (
+            <div key={index} className="todo">
+              <input className="form-check-input todo-checkbox" type="checkbox" value="" id={`todo_${index}`} />
+              <label className="form-check-label todo-text" htmlFor={`todo_${index}`}>
+                {todo.todo}
+              </label>
+            </div>
+          ))}
+        </div>
+        <div className="col">
+          <h1>Done</h1>
+          {todos.map((todo: Todo, index) => (
+            <div key={index} className="todo">
+              <input className="form-check-input todo-checkbox" type="checkbox" value="" checked />
+              <label className="form-check-label todo-text done" htmlFor="flexCheckDefault">
+                {todo.todo}
+              </label>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
