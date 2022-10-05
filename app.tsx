@@ -6,7 +6,7 @@ function App() {
   const [todos, setTodos] = React.useState([]);
 
   React.useEffect(() => {
-    fetch("http://localhost:3000/todos")
+    fetch("http://localhost:1880/todos")
       .then((response) => response.json())
       .then((data) => setTodos(data));
   }, []);
