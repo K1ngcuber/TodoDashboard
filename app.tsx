@@ -6,6 +6,18 @@ function App() {
   const [todos, setTodos] = React.useState([]);
 
   React.useEffect(() => {
+    //create socket
+    const socket = new WebSocket("ws://192.168.0.24:1880/ws");
+
+    //open socket
+    socket.onopen = () => {
+      console.log("Connected to server");
+    };
+
+    //listen for messages
+    socket.onmessage = (event) => {
+      fetchTodos();
+    };
     fetchTodos();
   }, []);
 
