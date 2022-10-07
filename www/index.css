@@ -26,10 +26,12 @@ body {
 }
 
 h1 {
-  border-bottom: 2px solid #fb8500;
+  color:white;
+  border-bottom: 2px solid white;
 }
 
 .todo {
+  color:white;
   display: flex;
   align-items: stretch;
 }
