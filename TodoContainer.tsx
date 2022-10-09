@@ -17,18 +17,16 @@ export default function TodoContainer({ todos, handleComplete, handleUncomplete 
             {todos
               .filter((x) => !x.done)
               .map((todo: Todo, index: any) => (
-                <div key={index} className="todo">
-                  <input
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      e.preventDefault();
-                      handleComplete(todo.timestamp);
-                    }}
-                    className="form-check-input todo-checkbox"
-                    type="checkbox"
-                    value=""
-                    id={`todo_${index}`}
-                  />
+                <div
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    handleComplete(todo.timestamp);
+                  }}
+                  key={index}
+                  className="todo"
+                >
+                  <input className="form-check-input todo-checkbox" type="checkbox" value="" id={`todo_${index}`} />
                   <label className="form-check-label todo-text" htmlFor={`todo_${index}`}>
                     {todo.todo}
                   </label>
@@ -44,19 +42,16 @@ export default function TodoContainer({ todos, handleComplete, handleUncomplete 
             {todos
               .filter((x) => x.done && dayjs(x.timestamp).add(1, "month") > dayjs())
               .map((todo: Todo, index: any) => (
-                <div key={index} className="todo">
-                  <input
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      e.preventDefault();
-                      handleUncomplete(todo.timestamp);
-                    }}
-                    className="form-check-input todo-checkbox"
-                    type="checkbox"
-                    value=""
-                    checked
-                    readOnly
-                  />
+                <div
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    handleUncomplete(todo.timestamp);
+                  }}
+                  key={index}
+                  className="todo"
+                >
+                  <input className="form-check-input todo-checkbox" type="checkbox" value="" checked readOnly />
                   <label className="form-check-label todo-text done" htmlFor="flexCheckDefault">
                     {todo.todo}
                   </label>
