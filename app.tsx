@@ -39,10 +39,20 @@ function App() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ timestamp }),
-    }).then(() => fetchTodos());
+    });
   };
 
-  return <TodoContainer todos={todos} handleComplete={handleComplete} />;
+  const handleUncomplete = (timestamp: string) => {
+    fetch(`http://192.168.0.24:1880/todos/`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ timestamp }),
+    });
+  };
+
+  return <TodoContainer todos={todos} handleComplete={handleComplete} handleUncomplete={handleUncomplete} />;
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);

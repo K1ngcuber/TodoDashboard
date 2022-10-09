@@ -41,3 +41,7 @@ h1 {
 .todo-text.done {
   text-decoration: line-through;
 }
+
+.col {
+  max-height: 100vh - 20px;
+}
