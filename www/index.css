@@ -7,31 +7,20 @@ body {
 #root {
   height: 100vh;
   width: 100vw;
-  background-image: url("https://source.unsplash.com/random/2560x1600/?colorful");
+  background-image: url("https://source.unsplash.com/random/1920x1080/?nature,dark");
   background-size: cover;
   overflow: hidden;
-  padding:10px;
+  padding: 10px;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.todo-container {
-  padding: 10px;
-  /* From https://css.glass */
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
 h1 {
-  color:white;
+  color: white;
   border-bottom: 2px solid white;
 }
 
 .todo {
-  color:white;
+  color: white;
   display: flex;
   align-items: stretch;
 }
@@ -50,6 +39,21 @@ h1 {
   text-decoration: line-through;
 }
 
-.col {
-  max-height: 100vh - 20px;
+.scroll-container {
+  max-height: calc(100vh - 85px);
+  overflow: scroll;
+  padding: 10px !important;
+}
+
+.glassify {
+  /* From https://css.glass */
+  text-align: center;
+  padding: 5px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  /* border: 1px solid rgba(255, 255, 255, 0.3); */
+  border: none;
 }
