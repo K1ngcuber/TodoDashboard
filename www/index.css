@@ -40,9 +40,13 @@ h1 {
 }
 
 .scroll-container {
-  max-height: calc(100vh - 85px);
+  max-height: calc(100vh - 20px);
   overflow: scroll;
   padding: 10px !important;
+}
+
+.scroll-container::-webkit-scrollbar {
+  width: 0px;
 }
 
 .glassify {
