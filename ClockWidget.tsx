@@ -23,7 +23,6 @@ export default function ClockWidget() {
       <div className="col-12">
         <div className="glassify clock-widget">
           <div className="clock-widget-element">{clock}</div>
-          <div className="clock-widget-element"></div>
           <div className="clock-widget-element">{date}</div>
         </div>
       </div>
