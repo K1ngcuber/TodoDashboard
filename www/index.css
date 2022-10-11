@@ -85,12 +85,12 @@ h1 {
   }
 }
 
-.clock-widget-element {
+.clock-widget {
   display: flex;
   justify-content: space-between;
 }
 
-.clock-widget {
+.clock-widget-element {
   flex: 0 auto;
   color: white;
   font-size: 16pt;
