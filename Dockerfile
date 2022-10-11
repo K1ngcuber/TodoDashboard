@@ -8,6 +8,7 @@ COPY package*.json ./
 
 RUN npm install
 
+RUN npm install --save node-red
 #Bundle app source
 COPY . .
 

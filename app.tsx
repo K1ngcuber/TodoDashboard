@@ -15,7 +15,7 @@ function App() {
     };
 
     //listen for messages
-    socket.onmessage = (event) => {
+    socket.onmessage = () => {
       fetchTodos();
     };
     fetchTodos();

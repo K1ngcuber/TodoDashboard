@@ -12,10 +12,10 @@ export default function TodoContainer({ todos, handleComplete, handleUncomplete 
     <div className="row gx-2">
       <div className="col">
         <h1 className="glassify">Todo</h1>
-        {todos.filter((x) => !x.done).length !== 0 && (
+        {todos.filter((x: Todo) => !x.done).length !== 0 && (
           <div className="scroll-container glassify">
             {todos
-              .filter((x) => !x.done)
+              .filter((x: Todo) => !x.done)
               .map((todo: Todo, index: any) => (
                 <div
                   onClick={(e) => {
@@ -37,10 +37,10 @@ export default function TodoContainer({ todos, handleComplete, handleUncomplete 
       </div>
       <div className="col">
         <h1 className="glassify">Done</h1>
-        {todos.filter((x) => x.done && dayjs(x.timestamp).add(1, "month") > dayjs()).length !== 0 && (
+        {todos.filter((x: Todo) => x.done && dayjs(x.timestamp).add(1, "month") > dayjs()).length !== 0 && (
           <div className="scroll-container glassify">
             {todos
-              .filter((x) => x.done && dayjs(x.timestamp).add(1, "month") > dayjs())
+              .filter((x: Todo) => x.done && dayjs(x.timestamp).add(1, "month") > dayjs())
               .map((todo: Todo, index: any) => (
                 <div
                   onClick={(e) => {
