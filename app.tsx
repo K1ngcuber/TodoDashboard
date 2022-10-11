@@ -1,6 +1,12 @@
+import dayjs from "dayjs";
 import * as React from "react";
 import ReactDOM from "react-dom/client";
+import ClockWidget from "./ClockWidget";
 import TodoContainer from "./TodoContainer";
+
+//dayjs locale
+import "dayjs/locale/de";
+dayjs.locale("de");
 
 function App() {
   const [todos, setTodos] = React.useState([]);
@@ -52,7 +58,12 @@ function App() {
     });
   };
 
-  return <TodoContainer todos={todos} handleComplete={handleComplete} handleUncomplete={handleUncomplete} />;
+  return (
+    <React.Fragment>
+      <ClockWidget />
+      <TodoContainer todos={todos} handleComplete={handleComplete} handleUncomplete={handleUncomplete} />
+    </React.Fragment>
+  );
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);

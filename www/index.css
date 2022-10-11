@@ -84,3 +84,18 @@ h1 {
     flex-direction: column;
   }
 }
+
+.clock-widget-element {
+  display: flex;
+  justify-content: space-between;
+}
+
+.clock-widget {
+  flex: 0 auto;
+  color: white;
+  font-size: 16pt;
+}
+
+.clock-widget-container {
+  margin-bottom: 9px;
+}
