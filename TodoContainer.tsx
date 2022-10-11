@@ -57,6 +57,24 @@ export default function TodoContainer({ todos, handleComplete, handleUncomplete 
                   </label>
                 </div>
               ))}
+            {todos
+              .filter((x: Todo) => x.done && dayjs(x.timestamp).add(1, "month") > dayjs())
+              .map((todo: Todo, index: any) => (
+                <div
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    handleUncomplete(todo.timestamp);
+                  }}
+                  key={index}
+                  className="todo"
+                >
+                  <input className="form-check-input todo-checkbox" type="checkbox" value="" checked readOnly />
+                  <label className="form-check-label todo-text done" htmlFor="flexCheckDefault">
+                    {todo.todo}
+                  </label>
+                </div>
+              ))}
           </div>
         )}
       </div>
