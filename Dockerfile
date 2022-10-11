@@ -1,3 +1,4 @@
+#---------------------FRONTEND---------------------
 FROM node:16
 
 #Create app directory
@@ -8,10 +9,12 @@ COPY package*.json ./
 
 RUN npm install
 
-RUN npm install --save node-red
 #Bundle app source
 COPY . .
 
 EXPOSE 8000
 
 CMD [ "npm", "start" ]
+
+#--------------------NODE-RED--------------------
+#TODO - Add node-red to docker-compose
