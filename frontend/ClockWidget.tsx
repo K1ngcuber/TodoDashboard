@@ -1,5 +1,6 @@
-import dayjs from "dayjs";
-import React, { useEffect } from "react";
+import * as dayjs from "dayjs";
+import * as React from "react";
+import { useEffect } from "react";
 
 export default function ClockWidget() {
   const [clock, setClock] = React.useState(dayjs().format("HH:mm:ss"));

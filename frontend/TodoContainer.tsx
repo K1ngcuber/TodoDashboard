@@ -1,5 +1,5 @@
-import dayjs from "dayjs";
-import React from "react";
+import * as dayjs from "dayjs";
+import * as React from "react";
 
 type Todo = {
   todo: string;
@@ -7,7 +7,13 @@ type Todo = {
   done: boolean;
 };
 
-export default function TodoContainer({ todos, handleComplete, handleUncomplete }) {
+type TodoProps = {
+  todos: Todo[];
+  handleComplete: (timestamp: string) => void;
+  handleUncomplete: (timestamp: string) => void;
+};
+
+export default function TodoContainer({ todos, handleComplete, handleUncomplete }: TodoProps) {
   return (
     <div className="row gx-2">
       <div className="col">

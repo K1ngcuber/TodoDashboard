@@ -1,24 +1,20 @@
-import dayjs from "dayjs";
+import * as dayjs from "dayjs";
 import * as React from "react";
-import ReactDOM from "react-dom/client";
 import ClockWidget from "./ClockWidget";
 import TodoContainer from "./TodoContainer";
+import "./app.css";
 
 //dayjs locale
 import "dayjs/locale/de";
 dayjs.locale("de");
 
-function App() {
+export default function App() {
+  const ip = process.env.APP_IP;
   const [todos, setTodos] = React.useState([]);
 
   React.useEffect(() => {
     //create socket
-    const socket = new WebSocket("ws://192.168.0.24:1880/ws");
-
-    //open socket
-    socket.onopen = () => {
-      console.log("Connected to server");
-    };
+    const socket = new WebSocket(`ws://${ip}/ws`);
 
     //listen for messages
     socket.onmessage = () => {
@@ -28,7 +24,7 @@ function App() {
   }, []);
 
   const fetchTodos = () => {
-    fetch("http://192.168.0.24:1880/todos", {
+    fetch(`http://${ip}/todos`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -39,7 +35,7 @@ function App() {
   };
 
   const handleComplete = (timestamp: string) => {
-    fetch(`http://192.168.0.24:1880/todos/`, {
+    fetch(`http://${ip}/todos/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -49,7 +45,7 @@ function App() {
   };
 
   const handleUncomplete = (timestamp: string) => {
-    fetch(`http://192.168.0.24:1880/todos/`, {
+    fetch(`http://${ip}/todos/`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -65,6 +61,3 @@ function App() {
     </React.Fragment>
   );
 }
-
-const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
-root.render(<App />);

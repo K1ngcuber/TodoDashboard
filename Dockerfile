@@ -1,20 +1,18 @@
 #---------------------FRONTEND---------------------
 FROM node:16
 
-#Create app directory
-WORKDIR /usr/src/app
+RUN mkdir -p /app
 
-#Install app dependencies
-COPY package*.json ./
+WORKDIR /app
+
+COPY frontend/package*.json ./
 
 RUN npm install
 
-#Bundle app source
-COPY . .
+COPY frontend/ .
 
-EXPOSE 8000
+ENV APP_IP=BAUM1234
 
 CMD [ "npm", "start" ]
 
 #--------------------NODE-RED--------------------
-#TODO - Add node-red to docker-compose
