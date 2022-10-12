@@ -11,7 +11,7 @@ RUN npm install
 
 COPY frontend/ .
 
-ENV APP_IP=BAUM1234
+ENV APP_IP=$BACKEND
 
 CMD [ "npm", "start" ]
 

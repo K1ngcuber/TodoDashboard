@@ -1,5 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { webpack, DefinePlugin } = require('webpack')
 module.exports = {
   mode: 'development',
   entry: './main.tsx',
@@ -36,6 +37,11 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './index.html',
+    }),
+    new DefinePlugin({
+      'process.env.APP_IP': JSON.stringify(
+        process.env.APP_IP || 'localhost:1880',
+      ),
     }),
   ],
 }
