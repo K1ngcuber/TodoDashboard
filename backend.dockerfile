@@ -1,6 +1,8 @@
 FROM nodered/node-red:latest
 
-ENV SECRET=***
+ENV SECRET=$SECRET
+
+RUN touch /data/todo.txt
 
 COPY backend/settings.js /data/settings.js
 COPY backend/flows.json /data/flows.json
