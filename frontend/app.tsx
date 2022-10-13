@@ -1,58 +1,29 @@
 import * as dayjs from "dayjs";
 import * as React from "react";
-import ClockWidget from "./ClockWidget";
-import TodoContainer from "./TodoContainer";
+import ClockWidget from "./components/ClockWidget";
+import TodoContainer from "./components/TodoContainer";
 import "./app.css";
 
 //dayjs locale
 import "dayjs/locale/de";
+import { fetchTodos, handleComplete, handleUncomplete } from "./components/TodoService";
 dayjs.locale("de");
 
 export default function App() {
-  const ip = process.env.APP_IP;
   const [todos, setTodos] = React.useState([]);
+  const ip = process.env.APP_IP;
 
   React.useEffect(() => {
     //create socket
     const socket = new WebSocket(`ws://${ip}/ws`);
 
     //listen for messages
-    socket.onmessage = () => {
-      fetchTodos();
+    socket.onmessage = async () => {
+      setTodos(await fetchTodos());
     };
-    fetchTodos();
+
+    fetchTodos().then((data) => setTodos(data));
   }, []);
-
-  const fetchTodos = () => {
-    fetch(`http://${ip}/todos`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => setTodos(data));
-  };
-
-  const handleComplete = (timestamp: string) => {
-    fetch(`http://${ip}/todos/`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ timestamp }),
-    });
-  };
-
-  const handleUncomplete = (timestamp: string) => {
-    fetch(`http://${ip}/todos/`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ timestamp }),
-    });
-  };
 
   return (
     <React.Fragment>
