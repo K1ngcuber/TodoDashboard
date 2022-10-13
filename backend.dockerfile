@@ -1,5 +1,7 @@
 FROM nodered/node-red:latest
 
+ENV SECRET=***
+
 COPY backend/settings.js /data/settings.js
 COPY backend/flows.json /data/flows.json
 COPY backend/flows_cred.json /data/flows_cred.json

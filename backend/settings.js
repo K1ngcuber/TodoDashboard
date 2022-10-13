@@ -79,7 +79,7 @@ module.exports = {
   // Note: once you set this property, do not change it - doing so will prevent
   // node-red from being able to decrypt your existing credentials and they will be
   // lost.
-  credentialSecret: '***',
+  credentialSecret: process.env.SECRET,
 
   // By default, all user data is stored in a directory called `.node-red` under
   // the user's home directory. To use a different location, the following
@@ -297,7 +297,7 @@ module.exports = {
       // debug - record information which is more verbose than info + info + warn + error + fatal errors
       // trace - record very detailed logging + debug + info + warn + error + fatal errors
       // off - turn off all logging (doesn't affect metrics or audit)
-      level: 'info',
+      level: "info",
       // Whether or not to include metric events in the log output
       metrics: false,
       // Whether or not to include audit events in the log output
@@ -331,9 +331,9 @@ module.exports = {
   // Customising the editor
   editorTheme: {
     menu: {
-      'menu-item-help': {
-        label: 'Node-RED Pi Website',
-        url: 'http://nodered.org/docs/hardware/raspberrypi.html',
+      "menu-item-help": {
+        label: "Node-RED Pi Website",
+        url: "http://nodered.org/docs/hardware/raspberrypi.html",
       },
     },
     projects: {
@@ -345,8 +345,8 @@ module.exports = {
         //  - auto - changes are automatically committed
         // This can be overridden per-user from the 'Git config'
         // section of 'User Settings' within the editor
-        mode: 'manual',
+        mode: "manual",
       },
     },
   },
-}
+};
